@@ -29,6 +29,16 @@ import IconContainer from './components/IconContainer';
 import InCallManager from 'react-native-incall-manager';
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
 import Geolocation from '@react-native-community/geolocation';
+import Beacons from 'react-native-beacons-manager';
+import { v4 as uuidv4 } from 'uuid';
+
+const generateUUID = () => {
+  const uuid = uuidv4();
+  console.log('Generated UUID:', uuid);
+  // Use the generated UUID as needed
+  return uuid;
+};
+
 
 
 export default function App({ }) {
@@ -261,6 +271,71 @@ export default function App({ }) {
       });
     requestLocationPermission();
   }, [])
+
+  const region = {
+  identifier: 'Estimotes',
+  uuid: generateUUID()
+};
+
+  // Beacons
+  // useEffect(() => {
+  //   // Request for authorization while the app is open
+  //   Beacons.requestWhenInUseAuthorization();
+
+  //   Beacons.startMonitoringForRegion(region);
+  //   Beacons.startRangingBeaconsInRegion(region);
+
+  //   Beacons.startUpdatingLocation();
+
+  //   // Listen for beacon changes
+  //   const subscription = DeviceEventEmitter.addListener(
+  //     'beaconsDidRange',
+  //     (data, error) => {
+  //       if (error) {
+  //         console.error("error beason", error)
+  //         return
+  //       }
+  //       console.log("==BeaconsBeaconsBeacons==", data)
+  //       // data.region - The current region
+  //       // data.region.identifier
+  //       // data.region.uuid
+
+  //       // data.beacons - Array of all beacons inside a region
+  //       //  in the following structure:
+  //       //    .uuid
+  //       //    .major - The major version of a beacon
+  //       //    .minor - The minor version of a beacon
+  //       //    .rssi - Signal strength: RSSI value (between -100 and 0)
+  //       //    .proximity - Proximity value, can either be "unknown", "far", "near" or "immediate"
+  //       //    .accuracy - The accuracy of a beacon
+  //     }
+  //   );
+
+  //   return () => {
+  //     subscription.remove();
+  //   }
+  // }, [])
+
+  const runBeason = async (Beacons) => {
+
+  }
+  // Beacons Setup
+  // useEffect(async () => {
+  //   // Tells the library to detect iBeacons
+  //   Beacons.detectIBeacons()
+
+  //   try {
+  //     await Beacons.startRangingBeaconsInRegion('REGION1')
+  //     console.log(`Beacons ranging started succesfully!`)
+  //   } catch (err) {
+  //     console.log(`Beacons ranging not started, error: ${error}`)
+  //   }
+
+  //   // Print a log of the detected iBeacons (1 per second)
+  //   DeviceEventEmitter.addListener('beaconsDidRange', (data) => {
+  //     console.log('Found beacons!', data.beacons)
+  //   })
+  // }, []);
 
   const JoinScreen = () => {
     return (

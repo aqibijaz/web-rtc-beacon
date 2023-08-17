@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.mackentoch.beaconsandroid.BeaconsAndroidPackage;
 import com.reactnativecommunity.geolocation.GeolocationPackage;
 import de.patwoz.rn.bluetoothstatemanager.RNBluetoothStateManagerPackage;
 import com.facebook.react.ReactInstanceManager;
